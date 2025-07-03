@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DompetKu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1 id="app-title">DompetKu</h1>
+        <button id="install-button" style="display: none;">Install</button>
+    </header>
+
+    <main id="app-content">
+        </main>
+
+    <nav class="bottom-nav">
+        <button id="nav-dashboard">Dashboard</button>
+        <button id="nav-reports">Laporan</button>
+        <button id="nav-settings">Kategori</button>
+    </nav>
+
+    <button class="fab" id="add-transaction-fab">+</button>
+
+    <template id="dashboard-page">
+        <div class="summary-container">
+            <div class="balance-card">
+                <h2>Saldo Tersedia</h2>
+                <p id="current-balance">Rp 0</p>
+            </div>
+            <div class="summary-details">
+                <div class="income-card">
+                    <h3>Pemasukan Bulan Ini</h3>
+                    <p id="monthly-income">Rp 0</p>
+                </div>
+                <div class="expense-card">
+                    <h3>Pengeluaran Bulan Ini</h3>
+                    <p id="monthly-expense">Rp 0</p>
+                </div>
+            </div>
+        </div>
+        <div class="chart-container">
+            <h3>Pengeluaran per Kategori</h3>
+            <canvas id="expense-pie-chart"></canvas>
+        </div>
+        <div class="recent-transactions">
+            <h3>Transaksi Terbaru</h3>
+            <ul id="transaction-list"></ul>
+        </div>
+    </template>
+
+    <template id="add-edit-transaction-page">
+        <form id="transaction-form">
+            <input type="hidden" id="transaction-id">
+            <div class="form-group toggle-buttons">
+                <button type="button" id="type-expense" class="active">Pengeluaran</button>
+                <button type="button" id="type-income">Pemasukan</button>
+            </div>
+            <div class="form-group">
+                <label for="amount">Jumlah</label>
+                <input type="number" id="amount" placeholder="Contoh: 50000" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Deskripsi</label>
+                <input type="text" id="description" placeholder="Contoh: Beli Kopi" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Tanggal</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Kategori</label>
+                <select id="category" required></select>
+            </div>
+            <div class="form-group">
+                <label for="payment-method">Metode Pembayaran</label>
+                <select id="payment-method" required></select>
+            </div>
+            <div class="form-actions">
+                <button type="button" id="cancel-button">Batal</button>
+                <button type="submit" id="save-button">Simpan</button>
+            </div>
+        </form>
+    </template>
+
+    <template id="reports-page">
+        <h2>Laporan & Statistik</h2>
+        <div class="filter-group">
+            <label for="report-period">Pilih Periode:</label>
+            <select id="report-period">
+                <option value="monthly">Bulanan</option>
+                <option value="yearly">Tahunan</option>
+            </select>
+        </div>
+        <div class="chart-container">
+            <h3>Tren Pengeluaran vs Pemasukan</h3>
+            <canvas id="trend-line-chart"></canvas>
+        </div>
+        <div id="report-summary"></div>
+    </template>
+
+    <template id="settings-page">
+        <div class="page-content">
+            <h2>Manajemen Kategori</h2>
+            <form id="category-form">
+                <div class="form-group">
+                    <label for="new-category-name">Nama Kategori Baru</label>
+                    <input type="text" id="new-category-name" placeholder="Contoh: Belanja Bulanan" required>
+                </div>
+                <button type="submit" class="button-primary">Tambah Kategori</button>
+            </form>
+            <div class="list-container">
+                <h3>Daftar Kategori</h3>
+                <ul id="category-list"></ul>
+            </div>
+        </div>
+    </template>
+
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

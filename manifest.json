@@ -1,0 +1,23 @@
+{
+  "name": "DompetKu - Pencatat Keuangan",
+  "short_name": "DompetKu",
+  "description": "Aplikasi sederhana untuk mencatat pemasukan dan pengeluaran keuangan pribadi.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2196F3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
